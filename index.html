@@ -143,36 +143,37 @@
         </a>
     </div>
     <!-- Newsletter Form -->
-<div style="margin-top:40px; background-color:#fff; padding:20px; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.1); width:300px; text-align:center;">
-‎  <h2 style="color:#333;">Subscribe to Newsletter</h2>
-‎  <form id="newsletter-form">
-‎    <input type="email" id="email" name="email" placeholder="Enter your email" required style="width:100%; padding:10px; margin-bottom:10px; border:2px solid #ff9a9e; border-radius:6px;">
-‎    <button type="submit" style="background-color:#ff9a9e; color:white; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Subscribe</button>
-‎  </form>
-‎  <p id="message" style="margin-top:10px; color:green;"></p>
-‎</div>
-‎
-‎<script>
-‎  const form = document.getElementById('newsletter-form');
-‎  const message = document.getElementById('message');
-‎
-‎  form.addEventListener('submit', function(e) {
-‎    e.preventDefault();
-‎    const email = document.getElementById('email').value;
-‎
-‎    fetch("https://script.google.com/macros/s/AKfycbxnx-7pNvBVC3IDqCDfE5tG9fLIRD7ZsMnriNQqEJYeBrsLHUBxZ5t-2fnkbhaikUc6gQ/exec", {
-‎      method: "POST",
-‎      body: new URLSearchParams({ "email": email })
-‎    })
-‎    .then(response => response.text())
-‎    .then(result => {
-‎      message.innerText = result.includes("Success") ? "Thanks for subscribing!" : "There was an error.";
-‎      form.reset();
-‎    })
-‎    .catch(() => {
-‎      message.innerText = "Failed to submit.";
-‎    });
-‎  });
-‎</script>
+<div style="margin-top: 60px; text-align: center; width: 100%; max-width: 500px; background: rgba(255, 255, 255, 0.2); padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); animation: fadeInUp 1s ease-out;">
+  <h2 style="color: #fff; margin-bottom: 20px; font-size: 24px;">Subscribe to My Newsletter</h2>
+  <form action="https://formspree.io/f/movdropq" method="POST" style="display: flex; flex-direction: column; align-items: center;">
+    <input type="email" name="email" placeholder="Enter your email" required
+      style="padding: 12px 20px; width: 90%; max-width: 350px; border: 2px solid #fff; border-radius: 30px; font-size: 16px; margin-bottom: 15px; outline: none; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
+    <button type="submit"
+      style="padding: 12px 30px; background: linear-gradient(45deg, #ff416c, #ff4b2b); color: #fff; font-size: 16px; border: none; border-radius: 30px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+      Subscribe
+    </button>
+  </form>
+  <p style="color: #fff; margin-top: 15px; font-size: 14px;">No spam — just cool updates from Fahim!</p>
+</div>
+
+<!-- Animation Keyframe -->
+<style>
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Button hover effect */
+  form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+</style>
 </body>
 </html>
