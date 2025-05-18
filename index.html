@@ -143,30 +143,36 @@
         </a>
     </div>
     <!-- Newsletter Form -->
-<div style="margin-top: 40px; text-align: center; padding: 20px; background: rgba(255,255,255,0.3); border: 2px solid #fff; border-radius: 15px;">
-  <h2 style="color: white;">Subscribe to My Newsletter</h2>
-  <input type="email" id="email" placeholder="Enter your email" required
-         style="padding: 10px; border-radius: 8px; border: none; width: 250px; margin: 10px 0;">
-  <br>
-  <button onclick="submitEmail()" style="padding: 10px 20px; border-radius: 8px; border: none; background-color: #333; color: white;">Subscribe</button>
-  <p id="message" style="color: white; margin-top: 10px;"></p>
-</div>
-
-<script>
-  function submitEmail() {
-    const email = document.getElementById("email").value;
-    const url = "https://script.google.com/macros/s/AKfycbxnx-7pNvBVC3IDqCDfE5tG9fLIRD7ZsMnriNQqEJYeBrsLHUBxZ5t-2fnkbhaikUc6gQ/exec";
-
-    fetch(url, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: "email=" + encodeURIComponent(email)
-    });
-
-    document.getElementById("message").innerText = "Thank you for subscribing!";
-    document.getElementById("email").value = "";
-  }
-</script>
+<div style="margin-top:40px; background-color:#fff; padding:20px; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.1); width:300px; text-align:center;">
+‎  <h2 style="color:#333;">Subscribe to Newsletter</h2>
+‎  <form id="newsletter-form">
+‎    <input type="email" id="email" name="email" placeholder="Enter your email" required style="width:100%; padding:10px; margin-bottom:10px; border:2px solid #ff9a9e; border-radius:6px;">
+‎    <button type="submit" style="background-color:#ff9a9e; color:white; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Subscribe</button>
+‎  </form>
+‎  <p id="message" style="margin-top:10px; color:green;"></p>
+‎</div>
+‎
+‎<script>
+‎  const form = document.getElementById('newsletter-form');
+‎  const message = document.getElementById('message');
+‎
+‎  form.addEventListener('submit', function(e) {
+‎    e.preventDefault();
+‎    const email = document.getElementById('email').value;
+‎
+‎    fetch("https://script.google.com/macros/s/AKfycbxnx-7pNvBVC3IDqCDfE5tG9fLIRD7ZsMnriNQqEJYeBrsLHUBxZ5t-2fnkbhaikUc6gQ/exec", {
+‎      method: "POST",
+‎      body: new URLSearchParams({ "email": email })
+‎    })
+‎    .then(response => response.text())
+‎    .then(result => {
+‎      message.innerText = result.includes("Success") ? "Thanks for subscribing!" : "There was an error.";
+‎      form.reset();
+‎    })
+‎    .catch(() => {
+‎      message.innerText = "Failed to submit.";
+‎    });
+‎  });
+‎</script>
 </body>
 </html>
