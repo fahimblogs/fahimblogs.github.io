@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(45deg, #1d1d1d, #3a3a3a);
+    color: #00ffae;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 174, 0.5);
+}
+
+header h1 {
+    margin: 0;
+    padding: 20px;
+    font-size: 2em;
+    color: #00ffae;
+    text-shadow: 0 0 10px #00ffae;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.link a {
+    color: #00ffae;
+    text-decoration: none;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.link a:hover {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+.link img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 5px #00ffae);
+}
+
+.upload-photos {
+    margin-top: 40px;
+}
+
+.upload-photos h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    background: #00ffae;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-size: 1em;
+}
