@@ -779,27 +779,22 @@ form.contact-form button.contact-submit:hover {
     });
     
     // Touch tracking
-    canvas.addEventListener('touchstart', (e) => {
-      e.preventDefault();
+    window.addEventListener('touchstart', (e) => {
       const touch = e.touches[0];
       touchPos.x = touch.clientX;
       touchPos.y = touch.clientY;
     });
     
-    canvas.addEventListener('touchmove', (e) => {
-      e.preventDefault();
+    window.addEventListener('touchmove', (e) => {
       const touch = e.touches[0];
       touchPos.x = touch.clientX;
       touchPos.y = touch.clientY;
     });
     
-    canvas.addEventListener('touchend', () => {
+    window.addEventListener('touchend', () => {
       touchPos.x = null;
       touchPos.y = null;
     });
-    
-    // Enable pointer events for touch
-    canvas.style.pointerEvents = 'auto';
     
     // Audio reactivity initialization (requires user interaction)
     function initAudio() {
@@ -836,7 +831,7 @@ form.contact-form button.contact-submit:hover {
         // Uncomment the line below to enable audio reactivity on click
         // initAudio();
       }
-    }, { once: false });
+    });
   </script>
 </body>
 </html>
