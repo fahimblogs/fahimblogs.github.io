@@ -832,6 +832,13 @@ form.contact-form button.contact-submit:hover {
         // initAudio();
       }
     });
+    
+    // Cleanup audio resources on page unload
+    window.addEventListener('beforeunload', () => {
+      if (audioContext && audioContext.state !== 'closed') {
+        audioContext.close();
+      }
+    });
   </script>
 </body>
 </html>
